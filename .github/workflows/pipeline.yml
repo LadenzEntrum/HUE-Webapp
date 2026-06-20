@@ -10,32 +10,3 @@ jobs:
     uses: LadenzEntrum/ci-templates/.github/workflows/ci.yml@d36a170e52a6ad5ff9775af55906618514667dde
     with:
       runtime: node
-    # secrets are not needed
-
-  deploy-staging:
-    needs: ci
-    if: github.ref == 'refs/heads/main'
-    uses: LadenzEntrum/ci-templates/.github/workflows/deploy.yml@d36a170e52a6ad5ff9775af55906618514667dde
-    with:
-      deploy_target: staging
-      target-path: /mnt/HettiWeb/hue-staging
-      artifact-name: ${{ needs.ci.outputs.artifact-name }}
-    secrets: inherit
-
-  deploy-production:
-    needs: deploy-staging
-    if: github.ref == 'refs/heads/main'
-    uses: LadenzEntrum/ci-templates/.github/workflows/deploy.yml@d36a170e52a6ad5ff9775af55906618514667dde
-    with:
-      deploy_target: production
-      target-path: /mnt/HettiWeb/hue
-      artifact-name: ${{ needs.ci.outputs.artifact-name }}
-    secrets: inherit
-
-  notify-failure:
-    needs: [ci, deploy-staging, deploy-production]
-    if: failure()
-    uses: LadenzEntrum/ci-templates/.github/workflows/agent-notify.yml@d36a170e52a6ad5ff9775af55906618514667dde
-    with:
-      status: failure
-    secrets: inherit
