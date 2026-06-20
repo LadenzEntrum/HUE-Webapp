@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f0f17">
+  <title>Hue Control</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header>
+    <h1>💡 <span>Hue</span> Control</h1>
+    <button id="refresh-btn" title="Aktualisieren">↻</button>
+  </header>
+  <main>
+    <div id="all-control" style="display:none">
+      <h2>Alle</h2>
+      <div class="controls" id="all-controls"></div>
+    </div>
+    <div id="status">Lade…</div>
+    <div id="rooms"></div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

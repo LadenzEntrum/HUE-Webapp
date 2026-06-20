@@ -16,7 +16,7 @@ jobs:
   ci:
     uses: LadenzEntrum/ci-templates/.github/workflows/ci.yml@d36a170e52a6ad5ff9775af55906618514667dde
     with:
-      runtime: node
+      runtime: php
     # secrets are not needed
 
   deploy-staging:
